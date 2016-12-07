@@ -1,0 +1,154 @@
+
+<!DOCTYPE html> 
+<html>
+<head>
+</head>
+
+ <h2>Project Results</h2>
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="http://code.highcharts.com/modules/drilldown.js"></script>
+  
+
+    <!-- Local copy of jsQuery js file is 
+    <script src="js/jquery.min.js"></script>
+    </head>
+    --> 
+
+     <!-- Local copy of Highcharts js file is 
+    <script src="js/highcharts.js"></script>
+    </head>
+    --> 
+
+
+    <!-- JavaScript to initialize the chart on document ready -->
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+
+      var options = {
+        chart: {
+          renderTo: 'container',
+          type: 'column'
+        },
+        title: {
+          text: '2011 Fairfax County VA Dropout Rates'
+        },
+        xAxis: {
+          categories: []
+        },
+        yAxis: {
+          title: {
+            text: 'Student Dropout Count'
+          }
+        },
+        series: []
+      };
+
+      $.get('data.csv', function(data) {
+        // Split the lines
+        var lines = data.split('\n');
+        $.each(lines, function(lineNo, line) {
+          var items = line.split(',');
+          
+          // header line containes categories
+          if (lineNo == 0) {
+            $.each(items, function(itemNo, item) {
+              if (itemNo > 0) options.xAxis.categories.push(item);
+            });
+          }
+          
+          // the rest of the lines contain data with their name in the first position
+          else {
+            var series = { 
+              data: []
+            };
+            $.each(items, function(itemNo, item) {
+              if (itemNo == 0) {
+                series.name = item;
+              } else {
+                series.data.push(parseFloat(item));
+              }
+            });
+            
+            options.series.push(series);
+
+          }
+          
+        });
+
+        //add suffix to title 
+        options.title.text = options.title.text + ' CSV'; 
+        
+        var chart = new Highcharts.Chart(options);
+      });
+      
+      
+    });
+
+
+</script>
+  
+</head>
+
+<body>
+
+    <div id="container" style="width:100%; height: 400px; margin: 0 auto"></div>
+    <br>
+    <h3>Conclusions</h3>
+
+    <p>
+    	In 2011, from Fairfax County in Virginia, a total of 4,365 students dropped out that year. Of these 4,365 students: 
+    </p>
+    <p>
+		<strong>The following variables were unknown or not collected for the students in the county: </strong>
+	
+		<ul>
+			<li>Unknown Race: 3,567 (81.7%)</li>
+			<li>Unknown Gender: 3,265 (74.8%)</li>
+			<li>Unknown Disability Flag: 2,694 (71.7%)</li>
+			<li>Unknown LEP Flag: 2,914 (66.8%)</li>
+			<li>Unknown Disadvantage Flag: 3,143 (72%)</li>
+		</ul>
+
+		<strong>Race: </strong>
+		<ul>
+			<li>Hispanic of any race: 798 (18.2%)</li>
+		</ul>
+		<strong>Gender: </strong>
+		<ul>
+			<li>Males: 653 (14.9%)</li>
+			<li>Females: 279 (6%)</li>
+		</ul>
+		<strong>Disability Flag: </strong>
+		<ul>
+			<li>Has Disability flag: 0</li>
+			<li>No Disability flag: 1671 (38.2%)</li>
+		</ul>
+		<strong>LEP Flag: </strong>
+		<ul>
+			<li>Has LEP flag: 932 (21.3%)</li>
+			<li>No LEP flag: 519 (11.8)</li>
+		</ul>
+		<strong>Disadvantage Flag: </strong>
+		<ul>
+			<li>Has Disadvantage flag: 801 (18.3%)</li>
+			<li>No Disadvantage flag: 421 (9.6%)</li>
+		</ul>
+	</p>
+	<p>
+		This data supports that about 73% of the total data that is collected, was incomplete, missing, not reported, or not collected. Therefore, I am only able to review and analyze about 27% of the data collected for Fairfax County. From this 27%, the majority (50% or more) of the students who dropped out were Hispanic males, with no disability flags (meaning that they did not have any recognized or known disabilities), had LEP flags (reflecting that English may have not been their first/primary/or dominant language, possibly impacting their ability to properly communicate), and lastly that they did have a disadvantage flag (generally proposing that they were part of the lower income class). Overall, the 27% of data that had variables that can be analyzed did support my general understanding of those students that were more prone to dropout of high school. However, I do feel that if a larger part of the data had been more complete, it could either hold a stronger confirmation of this conclusion, or possibly provide a broader perspective of the diversity of students who may be prone to dropping out and any additional support variables. 
+	</p>
+	<p>
+
+		It is my opinion that having this data more readily available, and easier to read and understand, it can be used to target those individuals that fall into the categories mentioned above (Hispanics, with LEP and Disadvantage flags) and provide additional support or assistance to help prevent them from dropping out. Being able to determine who may be at risk of dropping out and providing that additional support, or assistance can help continue to lower the high school dropout rate in within the nation, and more specifically within this county.  
+
+    </p>
+
+</body>
+</html>

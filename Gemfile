@@ -53,3 +53,10 @@ gem "highcharts-rails"
 
 gem 'rails_12factor', group: :production
 gem 'pg', group: :production
+
+#carrierwave gems for incorporating AmazonS3
+gem 'carrierwave'
+gem "fog-aws"
+
+#making passwords private so they are not viewed on Git
+gem "figaro"

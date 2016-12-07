@@ -13,5 +13,7 @@ get 'pages/chart'
 
 get 'pages/index'
 
+get 'pages/projectResults'
+
 
 end

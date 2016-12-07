@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html>
 <head>
   <h2>Contact Me</h2>
@@ -10,7 +10,7 @@
 
 
 
-	<form method="GET" action="mailto:MoralesL427@gmail.com" enctype="text/plain">
+	<form method="GET" action="mailto:MoralesL7@montclair.edu" enctype="text/plain">
 	    
 	    <div class="form-group">
 	    	<label for="Textarea">Subject</label>
@@ -85,19 +85,19 @@
 
 	      // Loop Through All Input Fields
 	      for(i = 0; i < target.length; ++i) {
-	         // Check to make sure it's a value. Don't need to include Buttons
+	         // Check to make sure it's a value
 	         if(target[i].type != 'text' && target[i].type != 'textarea') {
-	                // Skip to next input since this one doesn't match our rules
+	                // Skip to next input it doesn't match the set rules
 	            continue;
 	         }
 
-	         // Add Input Name and value followed by a line break
+	         // Add Input Name and values followed by a line break-- not exactly working as expected... need to research 
 	         message += target[i].name + ' : ' + target[i].value + "\r\n";
 	      }
-	      // Modify the hidden body input field that is required for the mailto: scheme
+	      // Modify the hidden body input field that is required for the mailto: scheme... need to reserach   
 	      target.elements["body"].value = message;
 
-	      // Submit the form since we previously stopped it. May cause recursive loop in some browsers? Should research this.
+	      // Submit the form
 	      this.submit();
 	   }
 </script>

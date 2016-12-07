@@ -1,8 +1,10 @@
-
+<!DOCTYPE html>
 <html>
 <head>
-    <title></title>
-    <!--
+    <head>
+  <h2>Generate Graph</h2>
+</head>
+   <!-- <title></title>
     <style type="text/css">
         body
         {
@@ -25,8 +27,9 @@
             border-color: #ccc;
         }
     </style>
-    -->
+  
 </head>
+  -->
 <body>
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/data.js"></script>
@@ -36,6 +39,33 @@
     <script type="text/javascript">
             $(function () {
                 $("#upload").bind("click", function () {
+
+
+                    
+                    Highcharts.chart('container', {
+                    data: {
+                        table: 'CSV'
+                    },
+                    chart: {
+                        type: 'column'
+                    },
+                    title: {
+                        text: 'Uploaded CSV File'
+                    },
+                    yAxis: {
+                        allowDecimals: false,
+                        title: {
+                            text: 'Units'
+                        }
+                    },
+                    tooltip: {
+                        formatter: function () {
+                            return '<b>' + this.series.name + '</b><br/>' +
+                                this.point.y + ' ' + this.point.name.toLowerCase();
+                        }
+                    }
+                });
+                    
                     var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/; // this will accept csv and txt files 
                     if (regex.test($("#fileUpload").val().toLowerCase())) {
                         if (typeof (FileReader) != "undefined") {
@@ -61,32 +91,9 @@
                             alert("This browser does not support HTML5.");
                         }
                     } else {
-                        alert("Please upload a valid CSV file.");
+                        alert("Please upload a valid CSV file. If this CSV file has been edited previously, kindy attempt re-downloading it again and try uploading it again.");
                     }
 
-            Highcharts.chart('container', {
-            data: {
-                table: 'CSV'
-            },
-            chart: {
-                type: 'column'
-            },
-            title: {
-                text: 'Uploaded CSV File'
-            },
-            yAxis: {
-                allowDecimals: false,
-                title: {
-                    text: 'Units'
-                }
-            },
-            tooltip: {
-                formatter: function () {
-                    return '<b>' + this.series.name + '</b><br/>' +
-                        this.point.y + ' ' + this.point.name.toLowerCase();
-                }
-            }
-        });
 
             
                 });
@@ -95,7 +102,7 @@
 
         <!--Attempt to generate multple graphs-->
 
-
+        <p>In order to generate your bar graph, please proceed to upload a CSV file using the option below. You will be have to select the upload button twice (once to upload your data, and the second time to generate the bar graph below. </p>
 
         <input type="file" id="fileUpload" />
         <input type="button" id="upload" class="btn btn-primary" value="Upload" />

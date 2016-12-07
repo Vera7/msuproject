@@ -1,0 +1,101 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Highcharts</title>
+    
+   
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="http://code.highcharts.com/modules/drilldown.js"></script>
+    <!-- <script src="http://code.highcharts.com/modules/boost.js"></script>
+    <script src="http://code.highcharts.com/modules/exporting.js"></script>
+  --> 
+
+    <!-- Local copy of jsQuery js file is 
+    <script src="js/jquery.min.js"></script>
+    </head>
+    --> 
+
+     <!-- Local copy of Highcharts js file is 
+    <script src="js/highcharts.js"></script>
+    </head>
+    --> 
+
+
+    <!-- JavaScript to initialize the chart on document ready -->
+
+<script type="text/javascript">
+
+
+
+$(function () {
+
+    $(document).ready(function () {
+
+        // Build the chart
+        Highcharts.chart('container1', {
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
+            },
+            title: {
+                text: '2011 Chesterfield County, VA Dropouts Rates'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>, StudentCount: <b>{point.y:.0f}</b>  '
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: false
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                name: 'Percentage',
+                colorByPoint: true,
+                data: [{
+                    name: 'No Disability Flag and No LEP Flag',
+                    y: 110
+                }, {
+                    name: 'Unknown Disability Flag and LEP Flag Status',
+                    y: 114,
+                    sliced: true,
+                    selected: true
+                }, {
+                    name: 'No Disability Flag and Unknown LEP Flag Status',
+                    y: 114
+                }, {
+                    name: 'Unknown Disability Flag and No LEP Flag',
+                    y: 110
+                }]
+            }]
+        });
+    });
+});
+
+
+</script>
+  
+</head>
+
+<body>
+
+    <div id="container1" style="width:100%; height: 400px; margin: 0 auto"></div>
+
+
+
+
+
+</body>
+</html>

@@ -1,27 +1,40 @@
-custom.css.scss.jumbotron {
-	position: relative; 
-	background-image: image-url('msu.jpg');  
-	background-size: 100% 100%;
-	background-color: #e3e0d7; 
-	background-repeat: no-repeat;
+.jumbotron {
+   position: relative;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    overflow: hidden;
 
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    margin-top: -20px; 
+    background-color: #010101; 
+    text-color: #ffffff; 
+    text-align: center; 
+      .container-fluid {
+ 
+      margin-left: -10px; 
+      padding-left: -10px; 
+      position: relative;
+      color: #ffffff; 
+
+    }
 }
 
 
 .navbar-default {
-	.container-fluid{
-		background-color: #b00100; 
-		.navbar-nav > li > a {
-		color: #ffffff; 
-		font-size: 16px; 
-		
-		}
-		.navbar-brand{
-		color: white; 
-		font-size: 24px; 
-
-		}
-		}
+  .container-fluid{
+    background-color: #b00100; 
+      .navbar-nav > li > a {
+        color: #ffffff; 
+        font-size: 16px; 
+      }
+      .navbar-brand{
+        color: white; 
+        font-size: 24px; 
+      }
+    }
 }
 
 html {
@@ -30,7 +43,12 @@ html {
 }
 
 body {
-  padding-bottom: 120px;
+  
+  padding-top: 0px;
+  padding-bottom: 50px;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
 }
 
 
@@ -43,5 +61,8 @@ body {
   text-align:center;
   overflow: auto; 
 }
+
+
+
 
 
